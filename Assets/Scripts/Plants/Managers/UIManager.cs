@@ -42,22 +42,15 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        screens = new Dictionary<Screens, GameObject>
-    {
-        { Screens.Death, deathScreen },
-        { Screens.Win, winScreen },
-        { Screens.Pause, pauseMenu },
-        { Screens.MainMenu, mainMenu },
-        { Screens.HowToPlay, howToPlayMenu },
-        { Screens.Warning, warningScreen },
-        { Screens.Seeds, seeds }
-    };
+        screens = new Dictionary<Screens, GameObject>();
 
-        foreach (var screen in screens.Values)
-        {
-            if (screen != null)
-                screen.SetActive(false);
-        }
+        if (deathScreen != null) screens.Add(Screens.Death, deathScreen);
+        if (winScreen != null) screens.Add(Screens.Win, winScreen);
+        if (pauseMenu != null) screens.Add(Screens.Pause, pauseMenu);
+        if (mainMenu != null) screens.Add(Screens.MainMenu, mainMenu);
+        if (howToPlayMenu != null) screens.Add(Screens.HowToPlay, howToPlayMenu);
+        if (warningScreen != null) screens.Add(Screens.Warning, warningScreen);
+        if (seeds != null) screens.Add(Screens.Seeds, seeds);
     }
     #endregion
     private void ShowScreen(Screens type)
@@ -99,10 +92,11 @@ public class UIManager : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         if(seeds != null)
-        seeds.SetActive(true);
+        ShowScreen(Screens.Seeds);
     }
     public void Restart()
     {
+        Destroy(UIManager.instance.gameObject);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0);
     }
     public void Menu()
@@ -111,7 +105,7 @@ public class UIManager : MonoBehaviour
     }
     public void HowToPlay()
     {
-        howToPlayMenu.SetActive(true);
+        ShowScreen(Screens.HowToPlay);
         mainMenu.SetActive(false);
     }
     public void Quit()

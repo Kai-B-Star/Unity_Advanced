@@ -6,7 +6,7 @@ public class PipeManager : MonoBehaviour
 {
     #region Declarations
     [SerializeField] private int correctPipes;
-    [SerializeField] private GameObject InteractablePipes;
+    [SerializeField] private GameObject interactablePipes;
     [SerializeField] private GameObject[] Pipes;
     [SerializeField] private int totalPipes = 0;
     private bool winActive;
@@ -14,11 +14,11 @@ public class PipeManager : MonoBehaviour
     #endregion
     private void Start()
     {
-        totalPipes = InteractablePipes.transform.childCount;
+        totalPipes = interactablePipes.transform.childCount;
         Pipes = new GameObject[totalPipes];
         for (int i = 0; i < Pipes.Length; i++)
         {
-            Pipes[i] = InteractablePipes.transform.GetChild(i).gameObject;
+            Pipes[i] = interactablePipes.transform.GetChild(i).gameObject;
         }
         WinActive = false;
     }

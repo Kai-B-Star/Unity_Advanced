@@ -781,8 +781,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b65b123d3139f749a184147112611b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  uiManager: {fileID: 0}
   pipe: {fileID: 1106714648}
 --- !u!212 &469836486
 SpriteRenderer:
@@ -3245,7 +3243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correctPipes: 1
-  InteractablePipes: {fileID: 262179593}
+  interactablePipes: {fileID: 262179593}
   Pipes: []
   totalPipes: 0
 --- !u!4 &1106714649
@@ -6216,6 +6214,7 @@ MonoBehaviour:
   mainMenu: {fileID: 0}
   howToPlayMenu: {fileID: 0}
   warningScreen: {fileID: 1698364718}
+  seeds: {fileID: 0}
 --- !u!4 &2131714768
 Transform:
   m_ObjectHideFlags: 0
