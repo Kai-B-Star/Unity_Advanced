@@ -280,50 +280,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225394878}
   m_CullTransparentMesh: 1
---- !u!1 &244293907
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 244293909}
-  - component: {fileID: 244293908}
-  m_Layer: 0
-  m_Name: SceneManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &244293908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 244293907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 098aaa5f39ab3e54fb7d996da487315b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &244293909
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 244293907}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7975679, y: 2.7373266, z: 0.76831836}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &288746523
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,13 +479,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 244293908}
-        m_TargetAssemblyTypeName: PlantSceneManager, Assembly-CSharp
-        m_MethodName: PPlant1
-        m_Mode: 1
+      - m_Target: {fileID: 1259581526}
+        m_TargetAssemblyTypeName: PlantSelector, Assembly-CSharp
+        m_MethodName: OnPlantSelected
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 9e4cbef723e4da2419916df279cdd125, type: 2}
+          m_ObjectArgumentAssemblyTypeName: PlantData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1538,6 +1494,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207339567}
   m_CullTransparentMesh: 1
+--- !u!1 &1259581525
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1259581527}
+  - component: {fileID: 1259581526}
+  m_Layer: 0
+  m_Name: PlantSelector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1259581526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259581525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fad367a4fd6fbf418853b570bdc1ea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1259581527
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259581525}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 369.85718, y: 264.96722, z: -1.5162435}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1269767760
 GameObject:
   m_ObjectHideFlags: 0
@@ -1990,13 +1990,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 244293908}
-        m_TargetAssemblyTypeName: PlantSceneManager, Assembly-CSharp
-        m_MethodName: Plant1
-        m_Mode: 1
+      - m_Target: {fileID: 1259581526}
+        m_TargetAssemblyTypeName: PlantSelector, Assembly-CSharp
+        m_MethodName: OnPlantSelected
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 0317d437da42c8e48a6d1d1efd7bc077, type: 2}
+          m_ObjectArgumentAssemblyTypeName: PlantData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2122,13 +2122,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 244293908}
-        m_TargetAssemblyTypeName: PlantSceneManager, Assembly-CSharp
-        m_MethodName: PPPlant1
-        m_Mode: 1
+      - m_Target: {fileID: 1259581526}
+        m_TargetAssemblyTypeName: PlantSelector, Assembly-CSharp
+        m_MethodName: OnPlantSelected
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: bbb8cb5eeb8808649bf66672963cd76a, type: 2}
+          m_ObjectArgumentAssemblyTypeName: PlantData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2725,4 +2725,4 @@ SceneRoots:
   - {fileID: 1403783707}
   - {fileID: 1269767762}
   - {fileID: 1475825680}
-  - {fileID: 244293909}
+  - {fileID: 1259581527}

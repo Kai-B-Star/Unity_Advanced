@@ -6,19 +6,21 @@ using UnityEngine;
 public class Valve : MonoBehaviour
 {
     [SerializeField] private PipeManager pipe;
- 
-    public static event Action OnValveSuccess;
-    public static event Action OnValveFailure;
+    private UIManager uiManager;
 
+    private void Start()
+    {
+      uiManager = UIManager.instance;
+    }
     private void OnMouseDown()
     {
         if (pipe != null && pipe.WinActive)
         {
-            OnValveSuccess?.Invoke();
+            uiManager.WinScreen();
         }
         else
         {
-            OnValveFailure?.Invoke();
+            uiManager.DeathScreen();
         }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
+        PlantData plant = PlantSelectionManager.SelectedPlant;
     }
     private void Start()
     {
@@ -49,9 +51,6 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
-    public static event Action OnDeath;
-    public static event Action OnGameWin;
-
     public void Pause()
     {
         Time.timeScale = 0f;
@@ -75,28 +74,7 @@ public class GameManager : MonoBehaviour
         CurrentPoints += points;
         if(CurrentPoints >= 3)
         {
-            GameManager.OnGameWin?.Invoke();
+            uiManager.WinScreen();
         }
-    }
-    private void OnEnable()
-    {
-        Valve.OnValveSuccess += Success;
-        Valve.OnValveFailure += Failure;
-    }
-
-    private void OnDisable()
-    {
-        Valve.OnValveSuccess -= Success;
-        Valve.OnValveFailure -= Failure;
-    }
-
-    private void Success()
-    {
-        UpdatePoints(3);
-    }
-
-    private void Failure()
-    {
-        GameManager.OnDeath?.Invoke();
     }
 }

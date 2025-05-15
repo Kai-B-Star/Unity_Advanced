@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject seeds;
 
     public static UIManager instance;
-    private GameManager gameManager;
+    private PlantData plant;
     #endregion
 
 
@@ -32,7 +32,6 @@ public class UIManager : MonoBehaviour
         }
 
         instance = this;
-        DontDestroyOnLoad(gameObject);
         if (howToPlayMenu != null)
         howToPlayMenu.SetActive(false);
     }
@@ -88,6 +87,22 @@ public class UIManager : MonoBehaviour
         if(seeds != null)
         seeds.SetActive(false);
     }
+    public void StartGame()
+    {
+        SceneManager.LoadScene("SeedPick");
+    }
+    public void WaterButton()
+    {
+        SceneManager.LoadScene("Water1");
+    }
+    public void DirtButton()
+    {
+        SceneManager.LoadScene("Nutrients1");
+    }
+    public void SunButton()
+    {
+        SceneManager.LoadScene("Sun1");
+    }
     public void Resume()
     {
         pauseMenu.SetActive(false);
@@ -112,15 +127,24 @@ public class UIManager : MonoBehaviour
     {
         Application.Quit();
     }
-
-    private void OnEnable()
+    public void WinRegular()
     {
-        GameManager.OnDeath += DeathScreen;
-        GameManager.OnGameWin += WinScreen;
+        PlantSelectionManager.AdvanceGrowth();
+        SceneManager.LoadScene("PlantGrowth");
     }
-    private void OnDisable()
+    public void WinSun()
     {
-        GameManager.OnDeath -= DeathScreen;
-        GameManager.OnGameWin -= WinScreen;
+        if(plant.plantName == "Sunflower")
+        {
+            SceneManager.LoadScene("Grown1");
+        }
+        else if(plant.plantName == "Carnivore")
+        {
+            SceneManager.LoadScene("Grown2");
+        }
+        else if (plant.plantName == "Suculent")
+        {
+            SceneManager.LoadScene("Grown3");
+        }
     }
 }

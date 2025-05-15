@@ -7,7 +7,6 @@ using UnityEngine.Events;
 public class Nutrient : MonoBehaviour, ICollectable
 {
     private GameManager manager;
-    public UnityEvent OnCollect;
 
     private void Start()
     {
@@ -16,7 +15,6 @@ public class Nutrient : MonoBehaviour, ICollectable
       
     public void Collect()
     {
-        OnCollect.Invoke();
         manager.UpdatePoints(1);
         Destroy(gameObject);
     }
