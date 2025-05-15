@@ -14,7 +14,7 @@ public class PlayerDirt : PlayerBase
     [SerializeField] private float CollisionCheckDistance;
     [SerializeField] private LayerMask CollisionLayer;
     #endregion
-    private void Awake()
+    private void Start()
     {
         InvokeRepeating("CreateDirt", 0, spawnRate);
     }

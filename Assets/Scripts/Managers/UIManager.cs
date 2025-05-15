@@ -15,9 +15,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject howToPlayMenu;
     [SerializeField] private GameObject warningScreen;
     [SerializeField] private GameObject seeds;
+    public enum Screens { Death, Win, Pause, Warning, HowToPlay, MainMenu, Seeds }
+    private Dictionary<Screens, GameObject> screenOrganize;
 
     public static UIManager instance;
-    private GameManager gameManager;
     #endregion
 
     #region MonoBehavior
@@ -36,7 +37,6 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
-        gameManager = GameManager.instance;
         if (pauseMenu != null)
             pauseMenu.SetActive(false);
 
@@ -49,24 +49,54 @@ public class UIManager : MonoBehaviour
         if(warningScreen != null) 
             warningScreen.SetActive(false);
 
+        GameManager.OnMinigameComplete += HandleMinigameComplete;
+        GameManager.OnDeath += HandleDeath;
+       
+        screenOrganize = new Dictionary<Screens, GameObject>();
+        screenOrganize.Add(Screens.Death, deathScreen);
+        screenOrganize.Add(Screens.Win, winScreen);
+        screenOrganize.Add(Screens.Pause, pauseMenu);
+        screenOrganize.Add(Screens.Warning, warningScreen);
+        screenOrganize.Add(Screens.HowToPlay, howToPlayMenu);
+        screenOrganize.Add(Screens.MainMenu, mainMenu);
+        screenOrganize.Add(Screens.Seeds, seeds);
     }
     #endregion
+    public void ShowScreen(Screens screenType)
+    {
+        foreach (var screen in screenOrganize.Values)
+        {
+            if (screen != null) screen.SetActive(false);
+        }
 
+        if (screenOrganize.ContainsKey(screenType) && screenOrganize[screenType] != null)
+        {
+            screenOrganize[screenType].SetActive(true);
+        }
+    }
+    private void HandleDeath()
+    {
+        DeathScreen();
+    }
+    private void HandleMinigameComplete()
+    {
+        WinScreen();
+    }
     public void DeathScreen()
     {
-        deathScreen.SetActive(true);
+        ShowScreen(Screens.Death);
         warningScreen.SetActive(false);
         Time.timeScale = 0f;
     }
     public void WinScreen()
     {
-        winScreen.SetActive(true);
+        ShowScreen(Screens.Win);
         warningScreen.SetActive(false);
         Time.timeScale = 0f;
     }
     public void WarningScreen()
     {
-        warningScreen.SetActive(true);
+        ShowScreen(Screens.Warning);
         if(pauseMenu != null)
         pauseMenu.SetActive(false);
         if(deathScreen != null)
@@ -76,7 +106,7 @@ public class UIManager : MonoBehaviour
     }
     public void PauseGame()
     {
-        pauseMenu.SetActive(true);
+        ShowScreen(Screens.Pause);
         warningScreen.SetActive(false);
         if(seeds != null)
         seeds.SetActive(false);
@@ -97,12 +127,11 @@ public class UIManager : MonoBehaviour
     }
     public void HowToPlay()
     {
-        howToPlayMenu.SetActive(true);
+        ShowScreen(Screens.HowToPlay);
         mainMenu.SetActive(false);
     }
     public void Quit()
     {
         Application.Quit();
-    }
-    
+    } 
 }

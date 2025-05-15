@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,8 @@ public class GameManager : MonoBehaviour
     private int currentPoints;
 
     public static GameManager instance;
-
+    public static event Action OnMinigameComplete;
+    public static event Action OnDeath;
     public int CurrentPoints { get => currentPoints; set => currentPoints = value; }
     #endregion
 
@@ -71,7 +73,15 @@ public class GameManager : MonoBehaviour
         CurrentPoints += points;
         if(CurrentPoints >= 3)
         {
-            uiManager.WinScreen();
+            MinigameComplete();
         }
+    }
+    public static void MinigameComplete()
+    {
+        OnMinigameComplete?.Invoke();
+    }
+    public static void Death()
+    {
+        OnDeath?.Invoke();
     }
 }
