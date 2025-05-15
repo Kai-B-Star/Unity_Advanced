@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Water1.unity
     guid: 26c832c88134e9e4a98abe6a784541a6
   - enabled: 1
-    path: Assets/Scenes/PlantGrowth.unity
+    path: Assets/Scenes/Plant1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Plant2.unity
@@ -48,10 +48,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Plant3.3.3.unity
     guid: 1efd0c41a0a26614ab58dfcdce6384b3
   - enabled: 1
-    path: Assets/Scenes/Grown2.unity
+    path: Assets/Scenes/Plant4.4.unity
     guid: 73a07961cf17839478b2a86b664e1d06
   - enabled: 1
-    path: Assets/Scenes/Grown3.unity
+    path: Assets/Scenes/Plant4.4.4.unity
     guid: 3eacd899f47599f4ead158aba7efd0f6
   - enabled: 1
     path: Assets/Scenes/Sun2.unity
@@ -69,7 +69,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Plant3.unity
     guid: 5a44947a0f460c3498eba3bdb852733b
   - enabled: 1
-    path: Assets/Scenes/Grown1.unity
+    path: Assets/Scenes/Plant4.unity
     guid: aac0ab078c24a1b4dbd65787cddba2b1
   - enabled: 1
     path: Assets/Scenes/SeedPick.unity

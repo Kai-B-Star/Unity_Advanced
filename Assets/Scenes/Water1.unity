@@ -781,6 +781,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b65b123d3139f749a184147112611b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  uiManager: {fileID: 0}
   pipe: {fileID: 1106714648}
 --- !u!212 &469836486
 SpriteRenderer:
@@ -964,6 +966,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605988111}
   m_CullTransparentMesh: 1
+--- !u!1 &607698503
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 607698505}
+  - component: {fileID: 607698504}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &607698504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607698503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 098aaa5f39ab3e54fb7d996da487315b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &607698505
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607698503}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.7975679, y: 2.7373266, z: 0.76831836}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &615068832
 GameObject:
   m_ObjectHideFlags: 0
@@ -3199,7 +3245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correctPipes: 1
-  interactablePipes: {fileID: 262179593}
+  InteractablePipes: {fileID: 262179593}
   Pipes: []
   totalPipes: 0
 --- !u!4 &1106714649
@@ -3974,9 +4020,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2131714767}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: WinRegular
+      - m_Target: {fileID: 607698504}
+        m_TargetAssemblyTypeName: PlantSceneManager, Assembly-CSharp
+        m_MethodName: Plant2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6170,7 +6216,6 @@ MonoBehaviour:
   mainMenu: {fileID: 0}
   howToPlayMenu: {fileID: 0}
   warningScreen: {fileID: 1698364718}
-  seeds: {fileID: 0}
 --- !u!4 &2131714768
 Transform:
   m_ObjectHideFlags: 0
@@ -6246,3 +6291,4 @@ SceneRoots:
   - {fileID: 262179594}
   - {fileID: 469836487}
   - {fileID: 1106714649}
+  - {fileID: 607698505}
