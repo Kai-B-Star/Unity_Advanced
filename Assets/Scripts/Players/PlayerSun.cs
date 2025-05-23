@@ -29,24 +29,9 @@ public class PlayerSun : PlayerBase
     }
     void Update()
     {
-
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-
-        rigidBody.velocity = new Vector2(horizontalInput * movementSpeed, rigidBody.velocity.y);
-        Jump();
+        HandleMovement();
+        HandleJump();
         GroundCheck();
-
-        animator.SetFloat("MoveSpeed", Mathf.Abs(horizontalInput));
-        animator.SetBool("IsGrounded", isGrounded);
-
-        if (horizontalInput < 0)
-        {
-            spriteRenderer.flipX = false;
-        }
-        else if (horizontalInput > 0)
-        {
-            spriteRenderer.flipX = true;
-        }
     }
     private void GroundCheck()
     {
@@ -63,12 +48,27 @@ public class PlayerSun : PlayerBase
             isGrounded = false;
         }
     }
-    private void Jump()
+    private void HandleJump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
         {
             animator.SetTrigger("Jump");
             rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
+        if(Input.GetKeyUp(KeyCode.Space) && rigidBody.velocity.y > 0)
+        {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, rigidBody.velocity.y / 2);
+        }
     }
+    private void HandleMovement()
+    {
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+
+        rigidBody.velocity = new Vector2(horizontalInput * movementSpeed, rigidBody.velocity.y);
+        animator.SetFloat("MoveSpeed", Mathf.Abs(horizontalInput));
+        animator.SetBool("IsGrounded", isGrounded);
+
+        if (horizontalInput != 0)
+            spriteRenderer.flipX = horizontalInput > 0;
+    } 
 }
